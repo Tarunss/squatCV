@@ -10,8 +10,11 @@ detector = pm.poseDetector()
 while True:
     success, img = cap.read()
     img = detector.findPose(img)
-    lmList = detector.findPosition(img)
-    print(lmList[14])
+    lmList = detector.findPosition(img,False)
+    if len(lmList)!= 0:
+        detector.findAngle(img,23,25,27)
+
+    # print(lmList[14])
     cTime = time.time()
     fps = 1/(cTime-pTime)
     pTime = cTime
